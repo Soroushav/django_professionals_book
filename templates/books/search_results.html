@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}Search Result{% endblock title %}
+</head>
+<body>
+    {% block content %}
+        <br>
+        <br>
+        <br>
+        <h1>Search Results</h1>
+        {% for book in book_list %}
+            <div>
+            <h3><a href="{{ book.get_absolute_url }}">{{ book.tittle }}</a> </h3>
+            <p>Author : {{ book.author }}</p>
+            <p>Price : $ {{ book.price }}</p>
+            </div>
+        {% endfor %}
+    {% endblock content %}
+</body>
+</html>

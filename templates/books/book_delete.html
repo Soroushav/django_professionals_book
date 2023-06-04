@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}{{ book.tittle }}{% endblock title %}
+</head>
+<body>
+    {% block content %}
+        <br>
+        <br>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            <h3>Are you sure you want to delete this book?</h3>
+            <input class="btn btn-danger" type="submit" value="Delete">
+        </form>
+    {% endblock content %}
+</body>
+</html>

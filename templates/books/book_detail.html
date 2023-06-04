@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends '_base.html' %}
+{% load static %}
+{% block title %} {{ book.tittle }} {% endblock title %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    {% if book.cover %}
+        <img class="bookcover" src="{{ book.cover.url }}" alt="{{ book.tittle }}">
+    {% endif %}
+    <h1> <a href=""> {{ book.tittle }} </a></h1>
+    <p> By : {{ book.author }} </p>
+    <p> Price : {{ book.price }} </p>
+    <a href="{% url 'book_edit' book.pk %}">+ Edit Book</a> |
+    <a href="{% url 'book_delete' book.pk %}">- Delete Book</a>
+    <h3>Reviews</h3>
+    {% for review in book.reviews.all %}
+        <li>{{ review.text }} (by:{{ review.author }})</li>
+    {% endfor %}
+
+{% endblock content %}

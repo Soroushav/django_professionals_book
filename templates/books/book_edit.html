@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}{{ book.tittle }}{% endblock title %}
+</head>
+<body>
+    {% block content %}
+        <br>
+        <br>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-success" type="submit">Confirm</button>
+        </form>
+    {% endblock content %}
+</body>
+</html>

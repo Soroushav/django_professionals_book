@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %} HomePage {% endblock title %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <h1> Home </h1>
+    <form method="get" class="form-inline mt-2 mt-md-0" action="{% url 'search_results' %}">
+        <input name="q" type="text" placeholder="Type Your Search For Book" aria-label="Search" class="form-control mr-sm-2">
+    <button type="submit" class="btn btn-success">Search</button>
+    </form>
+    <br>
+
+    {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}</p>
+        <a href="{% url 'account_logout' %}">Log Out</a>
+    {% else %}
+        <p> you are not logged in :</p>
+        <a href="{% url 'account_login' %}">Log In</a> |
+        <a href="{% url 'account_signup' %}">Sign Up</a>
+    {% endif %}
+{% endblock content %}
